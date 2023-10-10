@@ -1,0 +1,55 @@
+# Referencia:
+# https://renatogroffe.medium.com/postgresql-pgadmin-4-docker-compose-montando-rapidamente-um-ambiente-para-uso-55a2ab230b89
+
+
+
+# sudo apt  install docker-compose        --Instale o docker-compose:
+
+version: '3'
+
+services:
+  myPostgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "123456"
+      POSTGRES_DB: "meubancoteste"
+    ports:
+      - "5432:5432"
+
+  myPGadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "seu@email.com" #Coloque algum email seu aqui.
+      PGADMIN_DEFAULT_PASSWORD: "123456"
+    ports:
+      - "5050:80"
+    depends_on:
+      - myPostgres
+
+
+
+# sudo docker-compose up -d        --Use o comando para baixar as imagens e criar os containers:
+
+
+
+# Guia para o pgadmin:
+# https://www.tabnews.com.br/thiagovalle/tutorial-como-instalar-e-rodar-o-banco-postgres-no-docker
+
+
+# Acesse: http://localhost:5050
+
+# Faca login:
+  # email:                seu@email.com
+  # senha:                123456
+
+# Selecione: 'Create new server'
+
+# General:
+  # name:                 jpa
+
+# Conexao:
+  # Host name/address:    compose_myPostgres_1
+  # Port:                 5432
+  # Maintenance database: meubancoteste
+  # Username              postgres
+  # Senha                 123456
