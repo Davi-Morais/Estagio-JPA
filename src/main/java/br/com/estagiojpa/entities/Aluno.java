@@ -28,6 +28,9 @@ public class Aluno implements Serializable {
     
     @ManyToOne
     private Orientador orientador = new Orientador();
+    
+    @ManyToOne
+    private Empresa empresa = new Empresa();
 
     public Orientador getOrientador() {
         return orientador;
@@ -37,6 +40,14 @@ public class Aluno implements Serializable {
         this.orientador = orientador;
     }
 
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+    
     public Long getId() {
         return id;
     }
