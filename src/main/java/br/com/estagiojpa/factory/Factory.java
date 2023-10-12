@@ -15,5 +15,6 @@ public class Factory {
         EntityManager manager = factory.createEntityManager();
         
         
+        factory.close();
     }
 }
