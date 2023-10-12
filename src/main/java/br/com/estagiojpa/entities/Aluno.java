@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +25,17 @@ public class Aluno implements Serializable {
     private String email;
     private int idade;
     private char genero; // M ou F
+    
+    @ManyToOne
+    private Orientador orientador = new Orientador();
+
+    public Orientador getOrientador() {
+        return orientador;
+    }
+
+    public void setOrientador(Orientador orientador) {
+        this.orientador = orientador;
+    }
 
     public Long getId() {
         return id;
