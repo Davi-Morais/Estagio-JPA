@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,8 +26,17 @@ public class Estagio implements Serializable {
     private int cargaHoraria;
     
     private String status; //em andamento ou finalizado
-
     
+    @ManyToOne
+    private Aluno aluno = new Aluno();
+    
+    @ManyToOne
+    private Empresa empresa = new Empresa();
+    
+    @ManyToOne
+    private Orientador orientador = new Orientador();
+
+
     public Long getId() {
         return id;
     }
@@ -66,6 +76,28 @@ public class Estagio implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+
+    public Orientador getOrientador() {
+        return orientador;
+    }
+
+    public void setOrientador(Orientador orientador) {
+        this.orientador = orientador;
+    }
 }

@@ -27,6 +27,9 @@ public class Orientador implements Serializable {
     @OneToMany(mappedBy = "orientador")
     private List<Aluno> alunos = new ArrayList<>();
     
+    @OneToMany(mappedBy = "orientador")
+    private List<Estagio> estagios = new ArrayList<>();
+    
     public List<Aluno> getAlunos() {
         return alunos;
     }
@@ -53,6 +56,14 @@ public class Orientador implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Estagio> getEstagios() {
+        return estagios;
+    }
+
+    public void setEstagios(List<Estagio> estagios) {
+        this.estagios = estagios;
     }
     
     
