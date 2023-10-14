@@ -5,7 +5,6 @@
 package br.com.estagiojpa.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,11 +24,8 @@ public class Empresa implements Serializable {
     private String nome;
     private String cnpj;
     
-    @OneToMany(mappedBy = "empresa")
-    private List<Aluno> alunos = new ArrayList<>();
-
-    @OneToMany(mappedBy = "empresa")
-    private List<Estagio> estagios = new ArrayList<>();
+    @OneToMany
+    private List<Aluno> alunos;
     
     public Long getId() {
         return id;
@@ -62,14 +58,5 @@ public class Empresa implements Serializable {
     public void setAlunos(List<Aluno> alunos) {
         this.alunos = alunos;
     }
-
-    public List<Estagio> getEstagios() {
-        return estagios;
-    }
-
-    public void setEstagios(List<Estagio> estagios) {
-        this.estagios = estagios;
-    }
-    
     
 }

@@ -5,7 +5,6 @@
 package br.com.estagiojpa.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,12 +23,10 @@ public class Orientador implements Serializable {
     private String nome;
     private String email;
 
-    @OneToMany(mappedBy = "orientador")
-    private List<Aluno> alunos = new ArrayList<>();
+    @OneToMany
+    private List<Aluno> alunos;
     
-    @OneToMany(mappedBy = "orientador")
-    private List<Estagio> estagios = new ArrayList<>();
-    
+
     public List<Aluno> getAlunos() {
         return alunos;
     }
@@ -56,14 +53,6 @@ public class Orientador implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<Estagio> getEstagios() {
-        return estagios;
-    }
-
-    public void setEstagios(List<Estagio> estagios) {
-        this.estagios = estagios;
     }
     
     
