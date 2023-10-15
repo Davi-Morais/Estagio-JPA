@@ -25,7 +25,7 @@ public class Orientador implements Serializable {
     private String email;
 
     @OneToMany
-    private List<Aluno> alunos = new ArrayList<>();;
+    private List<Aluno> alunos = new ArrayList<>();
     
 
     public List<Aluno> getAlunos() {

@@ -5,6 +5,7 @@
 package br.com.estagiojpa.factory;
 
 import br.com.estagiojpa.entities.Aluno;
+import br.com.estagiojpa.entities.Empresa;
 import br.com.estagiojpa.entities.Orientador;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -87,8 +88,27 @@ public class Factory {
         manager.persist(orientador3);
         manager.persist(orientador4);
         manager.getTransaction().commit();
-        */
         
+        
+        Empresa empresa1 = new Empresa();
+        empresa1.setNome("Happy Code Solucoes");
+        empresa1.setCnpj("00.XXX.000/0001-77");
+        empresa1.setAlunos(aluno1);
+        empresa1.setAlunos(aluno2);
+        empresa1.setAlunos(aluno3);
+        
+        Empresa empresa2 = new Empresa();
+        empresa2.setNome("Escopo Digital Cajazeiras");
+        empresa2.setCnpj("11.XXX.111/0001-99");
+        empresa2.setAlunos(aluno4);
+        empresa2.setAlunos(aluno5);
+        
+        manager.getTransaction().begin();
+        manager.persist(empresa1);
+        manager.persist(empresa2);
+        manager.getTransaction().commit();
+        */
+
         
         manager.close();    
         factory.close();
