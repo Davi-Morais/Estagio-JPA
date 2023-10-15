@@ -6,6 +6,7 @@ package br.com.estagiojpa.factory;
 
 import br.com.estagiojpa.entities.Aluno;
 import br.com.estagiojpa.entities.Empresa;
+import br.com.estagiojpa.entities.Estagio;
 import br.com.estagiojpa.entities.Orientador;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -107,8 +108,61 @@ public class Factory {
         manager.persist(empresa1);
         manager.persist(empresa2);
         manager.getTransaction().commit();
+        
+        
+        Estagio estagio1 = new Estagio();
+        estagio1.setCargaHoraria(100);
+        estagio1.setInicioEstagio("15/10/2023");
+        estagio1.setFimEstagio("20/03/2024");
+        estagio1.setStatus("em andamento");
+        estagio1.setAluno(aluno1);
+        estagio1.setOrientador(orientador3);
+        estagio1.setEmpresa(empresa1);
+        
+        Estagio estagio2 = new Estagio();
+        estagio2.setCargaHoraria(150);
+        estagio2.setInicioEstagio("10/08/2021");
+        estagio2.setFimEstagio("28/05/2022");
+        estagio2.setStatus("finalizado");
+        estagio2.setAluno(aluno4);
+        estagio2.setOrientador(orientador4);
+        estagio2.setEmpresa(empresa2);
+        
+        Estagio estagio3 = new Estagio();
+        estagio3.setCargaHoraria(200);
+        estagio3.setInicioEstagio("22/06/2023");
+        estagio3.setFimEstagio("22/06/2024");
+        estagio3.setStatus("em andamento");
+        estagio3.setAluno(aluno5);
+        estagio3.setOrientador(orientador2);
+        estagio3.setEmpresa(empresa2);
+        
+        Estagio estagio4 = new Estagio();
+        estagio4.setCargaHoraria(150);
+        estagio4.setInicioEstagio("16/04/2023");
+        estagio4.setFimEstagio("22/11/2023");
+        estagio4.setStatus("em andamento");
+        estagio4.setAluno(aluno2);
+        estagio4.setOrientador(orientador2);
+        estagio4.setEmpresa(empresa1);
+        
+        Estagio estagio5 = new Estagio();
+        estagio5.setCargaHoraria(100);
+        estagio5.setInicioEstagio("10/02/2020");
+        estagio5.setFimEstagio("18/10/2020");
+        estagio5.setStatus("finalizado");
+        estagio5.setAluno(aluno3);
+        estagio5.setOrientador(orientador1);
+        estagio5.setEmpresa(empresa1);
+        
+        manager.getTransaction().begin();
+        manager.persist(estagio1);
+        manager.persist(estagio2);
+        manager.persist(estagio3);
+        manager.persist(estagio4);
+        manager.persist(estagio5);
+        manager.getTransaction().commit();
         */
-
         
         manager.close();    
         factory.close();
