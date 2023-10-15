@@ -164,6 +164,69 @@ public class Factory {
         manager.getTransaction().commit();
         */
         
+        
+        
+        //Update/Atualizacao ------
+        
+        /*
+        
+        //Atualizar data do Fim do estagio
+        Estagio estagio1_update = manager.find(Estagio.class, 1L);
+        estagio1_update.setFimEstagio("20/03/2027");
+        
+        manager.getTransaction().begin();
+        manager.merge(estagio1_update);
+        manager.getTransaction().commit();
+        
+        //Atualizar email de aluno:
+        Aluno aluno_email_atualizar = manager.find(Aluno.class, 4L);
+        aluno_email_atualizar.setEmail("gabrielaNovoEmail@email.com");
+        
+        manager.getTransaction().begin();
+        manager.merge(aluno_email_atualizar);
+        manager.getTransaction().commit();
+        
+        //Atualizar email e nome de orientador:
+        Orientador orientador_email_nome = manager.find(Orientador.class, 3L);
+        orientador_email_nome.setEmail("joaoFernands@gmail.com");
+        orientador_email_nome.setNome("Joao Felix");
+        
+        manager.getTransaction().begin();
+        manager.merge(orientador_email_nome);
+        manager.getTransaction().commit();
+        
+        //Atualizar orientador de aluno
+        
+        Aluno aluno = manager.find(Aluno.class, 4L);
+        Orientador orientadorAntigo = manager.find(Orientador.class, 4L);
+        Orientador orientadorNovo = manager.find(Orientador.class, 2L);
+        
+        orientadorAntigo.getAlunos().remove(aluno);
+        orientadorNovo.setAluno(aluno);
+        
+        
+        manager.getTransaction().begin();
+        manager.merge(orientadorAntigo);
+        manager.merge(orientadorNovo);
+        manager.getTransaction().commit();
+        
+        
+        //Atualiza o orientador de um estagio:
+        Estagio estagioAtualizado = manager.find(Estagio.class, 2L);
+        Orientador orientadorNovoEstagio = manager.find(Orientador.class, 2L);
+        
+        estagioAtualizado.setOrientador(orientadorNovoEstagio);
+        
+        manager.getTransaction().begin();
+        manager.merge(estagioAtualizado);
+        manager.getTransaction().commit();
+        
+        */
+        
+        
+        
+        
+        //deixar essas duas linhas aqui no final:
         manager.close();    
         factory.close();
     }
