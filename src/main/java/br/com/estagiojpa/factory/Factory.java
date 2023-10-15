@@ -8,9 +8,12 @@ import br.com.estagiojpa.entities.Aluno;
 import br.com.estagiojpa.entities.Empresa;
 import br.com.estagiojpa.entities.Estagio;
 import br.com.estagiojpa.entities.Orientador;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 
 public class Factory {
@@ -166,6 +169,126 @@ public class Factory {
         
         
         
+        
+
+        // Listando 
+        
+        //Listagem Aluno
+        
+        /*
+        manager.getTransaction().begin();
+
+        Query query = manager.createQuery("FROM Aluno");
+
+        List<Aluno> alunos = query.getResultList();
+
+
+        manager.getTransaction().commit();
+
+
+        for (Aluno a: alunos) {
+            System.out.println("Nome: " + a.getNome());
+            System.out.println("Email: " + a.getEmail());
+            System.out.println("Genero: " + a.getGenero());
+            System.out.println("Idade: " + a.getIdade());
+
+            System.out.println();
+        }
+        */
+
+        
+        //Listagem Empresas
+
+        /*manager.getTransaction().begin();
+
+        Query query = manager.createQuery("FROM Empresa");
+
+        List<Empresa> empresas = query.getResultList();
+
+
+        manager.getTransaction().commit();
+
+
+        for (Empresa e: empresas) {
+            System.out.println("Nome: " + e.getNome());
+            System.out.println("Cnpj: " + e.getCnpj());
+
+
+            System.out.println();
+        }
+        */
+
+        
+        //Listagem Estagios
+
+        /*
+        manager.getTransaction().begin();
+
+        Query query = manager.createQuery("FROM Estagio");
+
+        List<Estagio> estagios = query.getResultList();
+
+
+        manager.getTransaction().commit();
+
+
+        for (Estagio e: estagios) {
+            System.out.println("Aluno: " + e.getAluno());
+            System.out.println("Empresa: " + e.getEmpresa());
+            System.out.println("Orientador: " + e.getOrientador());
+            System.out.println("Carga Horaria: " + e.getCargaHoraria());
+            System.out.println("Inicio do estagio: " + e.getInicioEstagio());
+            System.out.println("Fim do estagio: " + e.getFimEstagio());
+            System.out.println("Status: " + e.getStatus());
+
+            System.out.println();
+        }
+        */
+
+        
+        //Listagem Orientadores
+        /*
+        manager.getTransaction().begin();
+
+        Query query = manager.createQuery("FROM Orientador");
+
+        List<Orientador> orientadores = query.getResultList();
+
+
+        manager.getTransaction().commit();
+
+
+        for (Orientador o: orientadores) {
+            System.out.println("Nome: " + o.getNome());
+            System.out.println("Empresa: " + o.getEmail());
+
+            System.out.println();
+        }
+        */
+
+
+
+        //Listagem filtrada
+
+
+        //Obter dados da entidade Aluno nos quais a entidade Estagio tem a coluna status igual a 'finalizado'
+        /*
+        String jpql = "SELECT a.nome, a.email, a.idade, CASE WHEN a.genero = 'M' THEN 'Masculino' ELSE 'Feminino' END FROM Aluno a WHERE a.id IN (SELECT e.aluno.id FROM Estagio e WHERE e.status = 'em andamento')";
+        TypedQuery<Object[]> query = manager.createQuery(jpql, Object[].class);
+
+        List<Object[]> resultados = query.getResultList();
+
+        for (Object[] resultado : resultados) {
+            String nome = (String) resultado[0];
+            String email = (String) resultado[1];
+            int idade = (int) resultado[2];
+            String genero = (String) resultado[3];
+            System.out.println("Nome: " + nome + ", Email: " + email + ", Idade: " + idade + ", Gênero: " + genero);        
+        }
+        */
+        
+        
+        
         //Update/Atualizacao ------
         
         /*
@@ -223,11 +346,10 @@ public class Factory {
         
         */
         
-        
-        
-        
+
+
         //deixar essas duas linhas aqui no final:
         manager.close();    
         factory.close();
-    }
+    }      
 }
