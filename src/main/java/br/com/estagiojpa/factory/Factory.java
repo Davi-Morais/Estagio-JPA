@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 
 public class Factory {
@@ -235,7 +236,7 @@ public class Factory {
             
             //Listagem Orientadores
             
-            manager.getTransaction().begin();
+            /*manager.getTransaction().begin();
 
             Query query = manager.createQuery("FROM Orientador");
 
@@ -250,12 +251,27 @@ public class Factory {
                 System.out.println("Empresa: " + o.getEmail());
                
                 System.out.println();
-            }
+            }*/
             
             
+            
+            //Listagem filtrada
+              
+            
+            //Obter dados da entidade Aluno nos quais a entidade Estagio tem a coluna status igual a 'finalizado'
+            String jpql = "SELECT a.nome, a.email, a.idade, CASE WHEN a.genero = 'M' THEN 'Masculino' ELSE 'Feminino' END FROM Aluno a WHERE a.id IN (SELECT e.aluno.id FROM Estagio e WHERE e.status = 'em andamento')";
+            TypedQuery<Object[]> query = manager.createQuery(jpql, Object[].class);
 
-        
-       
+            List<Object[]> resultados = query.getResultList();
+
+            for (Object[] resultado : resultados) {
+                String nome = (String) resultado[0];
+                String email = (String) resultado[1];
+                int idade = (int) resultado[2];
+                String genero = (String) resultado[3];
+                System.out.println("Nome: " + nome + ", Email: " + email + ", Idade: " + idade + ", Gênero: " + genero);        
+            }
+
         manager.close();    
         factory.close();
     }
