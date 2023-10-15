@@ -259,26 +259,64 @@ public class Factory {
               
             
             //Obter dados da entidade Aluno nos quais a entidade Estagio tem a coluna status igual a 'finalizado'
-            String jpql = "SELECT a.nome, a.email, a.idade, CASE WHEN a.genero = 'M' THEN 'Masculino' ELSE 'Feminino' END FROM Aluno a WHERE a.id IN (SELECT e.aluno.id FROM Estagio e WHERE e.status = 'em andamento')";
+           
+            /*String jpql = "SELECT a FROM Aluno a WHERE a.id IN (SELECT e.aluno.id FROM Estagio e WHERE e.status = 'finalizado')";
+            TypedQuery<Aluno> query = manager.createQuery(jpql, Aluno.class);
+
+            List<Aluno> resultados = query.getResultList();
+
+            for (Aluno aluno : resultados) {
+                System.out.println("Nome: " + aluno.getNome());
+                System.out.println("Email: " + aluno.getEmail());
+                System.out.println("Idade: " + aluno.getIdade());
+                System.out.println("Genero: " + aluno.getGenero());
+            }*/
+            
+            
+            //Obter dados da entidade Empresa onde na entidade Estagio tem a coluna status igual a 'em andamento'
+            
+           String jpql = "SELECT a.nome AS nomeAluno, e.nome AS nomeEmpresa " +
+              "FROM Estagio estagio " +
+              "JOIN estagio.aluno a " +
+              "JOIN estagio.empresa e " +
+              "WHERE estagio.status = 'em andamento'";
             TypedQuery<Object[]> query = manager.createQuery(jpql, Object[].class);
 
             List<Object[]> resultados = query.getResultList();
 
             for (Object[] resultado : resultados) {
-                String nome = (String) resultado[0];
-                String email = (String) resultado[1];
-                int idade = (int) resultado[2];
-                String genero = (String) resultado[3];
-                System.out.println("Nome: " + nome + ", Email: " + email + ", Idade: " + idade + ", Gênero: " + genero);        
+                String nomeAluno = (String) resultado[0];
+                String nomeEmpresa = (String) resultado[1];
+
+                System.out.println("Nome do Aluno: " + nomeAluno);
+                System.out.println("Nome da Empresa: " + nomeEmpresa);
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+            
+            
 
         manager.close();    
         factory.close();
     }
     
     
-    
-    
-    
-        
 }
