@@ -5,6 +5,7 @@
 package br.com.estagiojpa.factory;
 
 import br.com.estagiojpa.entities.Aluno;
+import br.com.estagiojpa.entities.Orientador;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,7 +17,7 @@ public class Factory {
         EntityManager manager = factory.createEntityManager();
         
         //Criando os alunos Nicole e Mateus Luiz:
-        
+        /*
         Aluno aluno1 = new Aluno();
         aluno1.setNome("Nicole");
         aluno1.setGenero('F');
@@ -34,6 +35,30 @@ public class Factory {
         manager.persist(aluno2);
         manager.getTransaction().commit();
         manager.close();
+        */
+        
+        
+        //Criando os orientadores
+        /*
+        Orientador orientador1 = new Orientador();
+        orientador1.setNome("Rafael");
+        orientador1.setEmail("rafael@email.com");
+        
+        Orientador orientador2 = new Orientador();
+        orientador2.setNome("Luiza");
+        orientador2.setEmail("luiza@email.com");
+        
+        Orientador orientador3 = new Orientador();
+        orientador3.setNome("Joao");
+        orientador3.setEmail("joao@email.com");
+        
+        manager.getTransaction().begin();
+        manager.persist(orientador1);
+        manager.persist(orientador2);
+        manager.persist(orientador3);
+        manager.getTransaction().commit();
+        manager.close();
+        */
         
         
         factory.close();
