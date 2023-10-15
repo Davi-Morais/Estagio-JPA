@@ -8,9 +8,11 @@ import br.com.estagiojpa.entities.Aluno;
 import br.com.estagiojpa.entities.Empresa;
 import br.com.estagiojpa.entities.Estagio;
 import br.com.estagiojpa.entities.Orientador;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 
 public class Factory {
@@ -164,7 +166,103 @@ public class Factory {
         manager.getTransaction().commit();
         */
         
+        
+        // Listando 
+        
+            //Listagem Aluno
+            /*manager.getTransaction().begin();
+
+            Query query = manager.createQuery("FROM Aluno");
+
+            List<Aluno> alunos = query.getResultList();
+
+
+            manager.getTransaction().commit();
+
+
+            for (Aluno a: alunos) {
+                System.out.println("Nome: " + a.getNome());
+                System.out.println("Email: " + a.getEmail());
+                System.out.println("Genero: " + a.getGenero());
+                System.out.println("Idade: " + a.getIdade());
+
+                System.out.println();
+            }*/
+            
+            //Listagem Empresas
+            
+            /*manager.getTransaction().begin();
+
+            Query query = manager.createQuery("FROM Empresa");
+
+            List<Empresa> empresas = query.getResultList();
+
+
+            manager.getTransaction().commit();
+
+
+            for (Empresa e: empresas) {
+                System.out.println("Nome: " + e.getNome());
+                System.out.println("Cnpj: " + e.getCnpj());
+
+
+                System.out.println();
+            }*/
+            
+            //Listagem Estagios
+            
+            /*manager.getTransaction().begin();
+
+            Query query = manager.createQuery("FROM Estagio");
+
+            List<Estagio> estagios = query.getResultList();
+
+
+            manager.getTransaction().commit();
+
+
+            for (Estagio e: estagios) {
+                System.out.println("Aluno: " + e.getAluno());
+                System.out.println("Empresa: " + e.getEmpresa());
+                System.out.println("Orientador: " + e.getOrientador());
+                System.out.println("Carga Horaria: " + e.getCargaHoraria());
+                System.out.println("Inicio do estagio: " + e.getInicioEstagio());
+                System.out.println("Fim do estagio: " + e.getFimEstagio());
+                System.out.println("Status: " + e.getStatus());
+  
+                System.out.println();
+            }*/
+            
+            //Listagem Orientadores
+            
+            manager.getTransaction().begin();
+
+            Query query = manager.createQuery("FROM Orientador");
+
+            List<Orientador> orientadores = query.getResultList();
+
+
+            manager.getTransaction().commit();
+
+
+            for (Orientador o: orientadores) {
+                System.out.println("Nome: " + o.getNome());
+                System.out.println("Empresa: " + o.getEmail());
+               
+                System.out.println();
+            }
+            
+            
+
+        
+       
         manager.close();    
         factory.close();
     }
+    
+    
+    
+    
+    
+        
 }
