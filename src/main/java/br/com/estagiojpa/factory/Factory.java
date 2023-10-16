@@ -439,8 +439,59 @@ public class Factory {
         }
         */
         
+        //Remover o aluno1 do Orientador3:
+        
+        /*
+        manager.getTransaction().begin();
+        
+        Orientador orientador_remover_aluno = manager.find(Orientador.class, 3L);
+        Aluno a = manager.find(Aluno.class, 1L);
+        
+        if (a == null) {
+            System.out.println("Não deu certo");
+        } else {
+            orientador_remover_aluno.getAlunos().remove(a);
+            manager.merge(orientador_remover_aluno);
+            
+            manager.getTransaction().commit();
+            
+            System.out.println("Remocao de Orientador com sucesso!");
+        }
+        */
         
         
+        //Removendo Orientador 3
+        
+        /*
+        Orientador orientador3_remover = manager.find(Orientador.class, 3L);
+        
+        if (orientador3_remover == null) {
+            System.out.println("Não deu certo");
+        } else {
+            manager.getTransaction().begin();
+            manager.remove(orientador3_remover);
+            manager.getTransaction().commit();
+            
+            System.out.println("Orientador removido!");
+        }
+        */
+        
+        
+        //Removendo aluno 1:
+        
+        /*
+        Aluno a1 = manager.find(Aluno.class, 1L);
+        
+        if (a1 == null) {
+            System.out.println("Não deu certo");
+        } else {
+            manager.getTransaction().begin();
+            manager.remove(a1);
+            manager.getTransaction().commit();
+            
+            System.out.println("Aluno removido!");
+        }
+        */
         
         
         
