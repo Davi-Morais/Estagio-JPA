@@ -377,8 +377,54 @@ public class Factory {
         
         */
         
-
-
+        
+        
+        //Operacoes de Remocao:
+        
+        //Removendo Estagio 1:
+        
+        /*
+        manager.getTransaction().begin();
+        
+        var e = new Estagio();
+        
+        e = manager.find(Estagio.class, 1L);
+        
+        if (e == null) {
+            System.out.println("Não deu certo");
+        } else {
+            manager.remove(e);
+            manager.getTransaction().commit();
+            System.out.println("Removido com sucesso!");
+        }
+        */
+        
+        
+        //Revomer o aluno1 da empresa1:
+        
+        /*
+        manager.getTransaction().begin();
+        
+        Empresa empresa1_remover_aluno = manager.find(Empresa.class, 1L);
+        Aluno a = manager.find(Aluno.class, 1L);
+        
+        if (a == null) {
+            System.out.println("Não deu certo");
+        } else {
+            empresa1_remover_aluno.getAlunos().remove(a);
+            manager.merge(empresa1_remover_aluno);
+            
+            manager.getTransaction().commit();
+            
+            System.out.println("Aluno saiu da Empresa!");
+        }
+        */
+        
+        
+        
+        
+        
+        
         //deixar essas duas linhas aqui no final:
         manager.close();    
         factory.close();
