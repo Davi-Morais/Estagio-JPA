@@ -311,7 +311,7 @@ public class Factory {
             }*/
 
            //Buscar o email de todos os alunos que são orientados pelo orientador 2
-           
+           /*
             String jpql = "SELECT a.email " +
               "FROM Estagio estagio " +
               "JOIN estagio.aluno a " +
@@ -326,7 +326,7 @@ public class Factory {
             for (String email : emails) {
                 System.out.println("Email do Aluno: " + email);
             }
-
+           */
            
            
            
