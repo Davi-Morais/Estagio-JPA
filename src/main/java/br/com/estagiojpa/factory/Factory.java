@@ -258,75 +258,80 @@ public class Factory {
 
         manager.getTransaction().commit();
 
-            for (Orientador o: orientadores) {
-                System.out.println("Nome: " + o.getNome());
-                System.out.println("Empresa: " + o.getEmail());
-        
-            for (Orientador o: orientadores) {
+        for (Orientador o: orientadores) {
             System.out.println("Nome: " + o.getNome());
             System.out.println("Empresa: " + o.getEmail());
 
+        for (Orientador o: orientadores) {
+        System.out.println("Nome: " + o.getNome());
+        System.out.println("Empresa: " + o.getEmail());
+
+        System.out.println();
+
             System.out.println();
-               
-                System.out.println();
-            }*/
-            
-            
-            
-            //Listagem filtrada
-                       
-            //Obter dados da entidade Aluno nos quais a entidade Estagio tem a coluna status igual a 'finalizado'
-           
-            /*String jpql = "SELECT a FROM Aluno a WHERE a.id IN (SELECT e.aluno.id FROM Estagio e WHERE e.status = 'finalizado')";
-            TypedQuery<Aluno> query = manager.createQuery(jpql, Aluno.class);
+        }*/
 
-            List<Aluno> resultados = query.getResultList();
 
-            for (Aluno aluno : resultados) {
-                System.out.println("Nome: " + aluno.getNome());
-                System.out.println("Email: " + aluno.getEmail());
-                System.out.println("Idade: " + aluno.getIdade());
-                System.out.println("Genero: " + aluno.getGenero());
-            }*/
-            
-            
-            //Obter dados da entidade Empresa e nome dos alunos onde na entidade Estagio tem a coluna status igual a 'em andamento'
-            
-           /*String jpql = "SELECT a.nome AS nomeAluno, e.nome AS nomeEmpresa " +
-              "FROM Estagio estagio " +
-              "JOIN estagio.aluno a " +
-              "JOIN estagio.empresa e " +
-              "WHERE estagio.status = 'em andamento'";
 
-            TypedQuery<Object[]> query = manager.createQuery(jpql, Object[].class);
+        //Listagem filtrada
 
-            List<Object[]> resultados = query.getResultList();
+        //Obter dados da entidade Aluno nos quais a entidade Estagio tem a coluna status igual a 'finalizado'
 
-            for (Object[] resultado : resultados) {
-                String nomeAluno = (String) resultado[0];
-                String nomeEmpresa = (String) resultado[1];
+        /*String jpql = "SELECT a FROM Aluno a WHERE a.id IN (SELECT e.aluno.id FROM Estagio e WHERE e.status = 'finalizado')";
+        TypedQuery<Aluno> query = manager.createQuery(jpql, Aluno.class);
 
-                System.out.println("Nome do Aluno: " + nomeAluno);
-                System.out.println("Nome da Empresa: " + nomeEmpresa);
-            }*/
+        List<Aluno> resultados = query.getResultList();
 
-           //Buscar o email de todos os alunos que são orientados pelo orientador 2
-           /*
-            String jpql = "SELECT a.email " +
-              "FROM Estagio estagio " +
-              "JOIN estagio.aluno a " +
-              "JOIN estagio.empresa e " +
-              "WHERE estagio.orientador.id  = 2 ";
-         
+        for (Aluno aluno : resultados) {
+            System.out.println("Nome: " + aluno.getNome());
+            System.out.println("Email: " + aluno.getEmail());
+            System.out.println("Idade: " + aluno.getIdade());
+            System.out.println("Genero: " + aluno.getGenero());
+        }*/
 
-            TypedQuery<String> query = manager.createQuery(jpql, String.class);
 
-            List<String> emails = query.getResultList();
+        //Obter dados da entidade Empresa e nome dos alunos onde na entidade Estagio tem a coluna status igual a 'em andamento'
 
-            for (String email : emails) {
-                System.out.println("Email do Aluno: " + email);
-            }
-           */
+        /*
+        String jpql = "SELECT a.nome AS nomeAluno, e.nome AS nomeEmpresa " +
+          "FROM Estagio estagio " +
+          "JOIN estagio.aluno a " +
+          "JOIN estagio.empresa e " +
+          "WHERE estagio.status = 'em andamento'";
+
+        TypedQuery<Object[]> query = manager.createQuery(jpql, Object[].class);
+
+        List<Object[]> resultados = query.getResultList();
+
+        for (Object[] resultado : resultados) {
+            String nomeAluno = (String) resultado[0];
+            String nomeEmpresa = (String) resultado[1];
+
+            System.out.println("Nome do Aluno: " + nomeAluno);
+            System.out.println("Nome da Empresa: " + nomeEmpresa);
+        }
+        */
+
+       
+       
+        //Buscar o email de todos os alunos que são orientados pelo orientador 2
+        
+        /*
+        String jpql = "SELECT a.email " +
+          "FROM Estagio estagio " +
+          "JOIN estagio.aluno a " +
+          "JOIN estagio.empresa e " +
+          "WHERE estagio.orientador.id  = 2 ";
+
+
+        TypedQuery<String> query = manager.createQuery(jpql, String.class);
+
+        List<String> emails = query.getResultList();
+
+        for (String email : emails) {
+            System.out.println("Email do Aluno: " + email);
+        }
+
            
            
            
