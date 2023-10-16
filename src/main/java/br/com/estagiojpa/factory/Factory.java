@@ -290,7 +290,7 @@ public class Factory {
             }*/
             
             
-            //Obter dados da entidade Empresa onde na entidade Estagio tem a coluna status igual a 'em andamento'
+            //Obter dados da entidade Empresa e nome dos alunos onde na entidade Estagio tem a coluna status igual a 'em andamento'
             
            /*String jpql = "SELECT a.nome AS nomeAluno, e.nome AS nomeEmpresa " +
               "FROM Estagio estagio " +
@@ -310,8 +310,22 @@ public class Factory {
                 System.out.println("Nome da Empresa: " + nomeEmpresa);
             }*/
 
+           //Buscar o email de todos os alunos que são orientados pelo orientador 2
+           
+            String jpql = "SELECT a.email " +
+              "FROM Estagio estagio " +
+              "JOIN estagio.aluno a " +
+              "JOIN estagio.empresa e " +
+              "WHERE estagio.orientador.id  = 2 ";
+         
 
+            TypedQuery<String> query = manager.createQuery(jpql, String.class);
 
+            List<String> emails = query.getResultList();
+
+            for (String email : emails) {
+                System.out.println("Email do Aluno: " + email);
+            }
 
            
            
