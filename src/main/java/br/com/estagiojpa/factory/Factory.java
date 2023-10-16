@@ -168,87 +168,105 @@ public class Factory {
         */
         
         
+        
+        
+
         // Listando 
         
-            //Listagem Aluno
-            /*manager.getTransaction().begin();
+        //Listagem Aluno
+        
+        /*
+        manager.getTransaction().begin();
 
-            Query query = manager.createQuery("FROM Aluno");
+        Query query = manager.createQuery("FROM Aluno");
 
-            List<Aluno> alunos = query.getResultList();
-
-
-            manager.getTransaction().commit();
-
-
-            for (Aluno a: alunos) {
-                System.out.println("Nome: " + a.getNome());
-                System.out.println("Email: " + a.getEmail());
-                System.out.println("Genero: " + a.getGenero());
-                System.out.println("Idade: " + a.getIdade());
-
-                System.out.println();
-            }*/
-            
-            //Listagem Empresas
-            
-            /*manager.getTransaction().begin();
-
-            Query query = manager.createQuery("FROM Empresa");
-
-            List<Empresa> empresas = query.getResultList();
+        List<Aluno> alunos = query.getResultList();
 
 
-            manager.getTransaction().commit();
+        manager.getTransaction().commit();
 
 
-            for (Empresa e: empresas) {
-                System.out.println("Nome: " + e.getNome());
-                System.out.println("Cnpj: " + e.getCnpj());
+        for (Aluno a: alunos) {
+            System.out.println("Nome: " + a.getNome());
+            System.out.println("Email: " + a.getEmail());
+            System.out.println("Genero: " + a.getGenero());
+            System.out.println("Idade: " + a.getIdade());
+
+            System.out.println();
+        }
+        */
+
+        
+        //Listagem Empresas
+
+        /*manager.getTransaction().begin();
+
+        Query query = manager.createQuery("FROM Empresa");
+
+        List<Empresa> empresas = query.getResultList();
 
 
-                System.out.println();
-            }*/
-            
-            //Listagem Estagios
-            
-            /*manager.getTransaction().begin();
-
-            Query query = manager.createQuery("FROM Estagio");
-
-            List<Estagio> estagios = query.getResultList();
+        manager.getTransaction().commit();
 
 
-            manager.getTransaction().commit();
+        for (Empresa e: empresas) {
+            System.out.println("Nome: " + e.getNome());
+            System.out.println("Cnpj: " + e.getCnpj());
 
 
-            for (Estagio e: estagios) {
-                System.out.println("Aluno: " + e.getAluno());
-                System.out.println("Empresa: " + e.getEmpresa());
-                System.out.println("Orientador: " + e.getOrientador());
-                System.out.println("Carga Horaria: " + e.getCargaHoraria());
-                System.out.println("Inicio do estagio: " + e.getInicioEstagio());
-                System.out.println("Fim do estagio: " + e.getFimEstagio());
-                System.out.println("Status: " + e.getStatus());
-  
-                System.out.println();
-            }*/
-            
-            //Listagem Orientadores
-            
-            /*manager.getTransaction().begin();
+            System.out.println();
+        }
+        */
 
-            Query query = manager.createQuery("FROM Orientador");
+        
+        //Listagem Estagios
 
-            List<Orientador> orientadores = query.getResultList();
+        /*
+        manager.getTransaction().begin();
+
+        Query query = manager.createQuery("FROM Estagio");
+
+        List<Estagio> estagios = query.getResultList();
 
 
-            manager.getTransaction().commit();
+        manager.getTransaction().commit();
 
+
+        for (Estagio e: estagios) {
+            System.out.println("Aluno: " + e.getAluno());
+            System.out.println("Empresa: " + e.getEmpresa());
+            System.out.println("Orientador: " + e.getOrientador());
+            System.out.println("Carga Horaria: " + e.getCargaHoraria());
+            System.out.println("Inicio do estagio: " + e.getInicioEstagio());
+            System.out.println("Fim do estagio: " + e.getFimEstagio());
+            System.out.println("Status: " + e.getStatus());
+
+            System.out.println();
+        }
+        */
+
+        
+        
+        //Listagem Orientadores
+        /*
+        manager.getTransaction().begin();
+
+        Query query = manager.createQuery("FROM Orientador");
+
+        List<Orientador> orientadores = query.getResultList();
+
+
+        manager.getTransaction().commit();
 
             for (Orientador o: orientadores) {
                 System.out.println("Nome: " + o.getNome());
                 System.out.println("Empresa: " + o.getEmail());
+        
+            for (Orientador o: orientadores) {
+            System.out.println("Nome: " + o.getNome());
+            System.out.println("Empresa: " + o.getEmail());
+
+            System.out.println();
                
                 System.out.println();
             }*/
@@ -256,8 +274,7 @@ public class Factory {
             
             
             //Listagem filtrada
-              
-            
+                       
             //Obter dados da entidade Aluno nos quais a entidade Estagio tem a coluna status igual a 'finalizado'
            
             /*String jpql = "SELECT a FROM Aluno a WHERE a.id IN (SELECT e.aluno.id FROM Estagio e WHERE e.status = 'finalizado')";
@@ -275,11 +292,12 @@ public class Factory {
             
             //Obter dados da entidade Empresa onde na entidade Estagio tem a coluna status igual a 'em andamento'
             
-           String jpql = "SELECT a.nome AS nomeAluno, e.nome AS nomeEmpresa " +
+           /*String jpql = "SELECT a.nome AS nomeAluno, e.nome AS nomeEmpresa " +
               "FROM Estagio estagio " +
               "JOIN estagio.aluno a " +
               "JOIN estagio.empresa e " +
               "WHERE estagio.status = 'em andamento'";
+
             TypedQuery<Object[]> query = manager.createQuery(jpql, Object[].class);
 
             List<Object[]> resultados = query.getResultList();
@@ -290,33 +308,80 @@ public class Factory {
 
                 System.out.println("Nome do Aluno: " + nomeAluno);
                 System.out.println("Nome da Empresa: " + nomeEmpresa);
-            }
+            }*/
 
 
 
 
+           
+           
+           
+
+       
+        
+        
+        //Update/Atualizacao ------
+        
+        /*
+        
+        //Atualizar data do Fim do estagio
+        Estagio estagio1_update = manager.find(Estagio.class, 1L);
+        estagio1_update.setFimEstagio("20/03/2027");
+        
+        manager.getTransaction().begin();
+        manager.merge(estagio1_update);
+        manager.getTransaction().commit();
+        
+        //Atualizar email de aluno:
+        Aluno aluno_email_atualizar = manager.find(Aluno.class, 4L);
+        aluno_email_atualizar.setEmail("gabrielaNovoEmail@email.com");
+        
+        manager.getTransaction().begin();
+        manager.merge(aluno_email_atualizar);
+        manager.getTransaction().commit();
+        
+        //Atualizar email e nome de orientador:
+        Orientador orientador_email_nome = manager.find(Orientador.class, 3L);
+        orientador_email_nome.setEmail("joaoFernands@gmail.com");
+        orientador_email_nome.setNome("Joao Felix");
+        
+        manager.getTransaction().begin();
+        manager.merge(orientador_email_nome);
+        manager.getTransaction().commit();
+        
+        //Atualizar orientador de aluno
+        
+        Aluno aluno = manager.find(Aluno.class, 4L);
+        Orientador orientadorAntigo = manager.find(Orientador.class, 4L);
+        Orientador orientadorNovo = manager.find(Orientador.class, 2L);
+        
+        orientadorAntigo.getAlunos().remove(aluno);
+        orientadorNovo.setAluno(aluno);
+        
+        
+        manager.getTransaction().begin();
+        manager.merge(orientadorAntigo);
+        manager.merge(orientadorNovo);
+        manager.getTransaction().commit();
+        
+        
+        //Atualiza o orientador de um estagio:
+        Estagio estagioAtualizado = manager.find(Estagio.class, 2L);
+        Orientador orientadorNovoEstagio = manager.find(Orientador.class, 2L);
+        
+        estagioAtualizado.setOrientador(orientadorNovoEstagio);
+        
+        manager.getTransaction().begin();
+        manager.merge(estagioAtualizado);
+        manager.getTransaction().commit();
+        
+        */
+        
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-            
-            
-
+        //deixar essas duas linhas aqui no final:
         manager.close();    
         factory.close();
     }
-    
-    
 }
+
