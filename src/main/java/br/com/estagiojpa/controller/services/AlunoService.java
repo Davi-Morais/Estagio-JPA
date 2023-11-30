@@ -17,7 +17,7 @@ public class AlunoService implements Serializable {
 	@Transactional
 	public void salvar(Aluno aluno) throws BusinessException {
 		if (aluno == null) {
-			throw new BusinessException("Não foi possível salvar a Editora.");
+			throw new BusinessException("Não foi possível salvar o Aluno.");
 		}
 		this.alunoDAO.guardar(aluno);
 	}
@@ -27,7 +27,7 @@ public class AlunoService implements Serializable {
 	public void excluir(Aluno aluno) throws BusinessException {
 		aluno = this.alunoDAO.porId(aluno.getId());
 		if (aluno == null) {
-			throw new BusinessException("Não é possível excluir a Editora!");
+			throw new BusinessException("Não é possível excluir o Aluno!");
 		}
 		this.alunoDAO.remover(aluno);
 	}
