@@ -1,5 +1,7 @@
 package br.com.estagiojpa.controller.services;
 
+import java.io.Serializable;
+
 import javax.inject.Inject;
 
 import br.com.estagiojpa.controller.exceptions.BusinessException;
@@ -7,7 +9,7 @@ import br.com.estagiojpa.entities.Orientador;
 import br.com.estagiojpa.model.daos.OrientadorDAO;
 import br.com.estagiojpa.model.utils.Transactional;
 
-public class OrientadorService {
+public class OrientadorService implements Serializable {
 	@Inject
 	private OrientadorDAO orientadorDAO;
 	

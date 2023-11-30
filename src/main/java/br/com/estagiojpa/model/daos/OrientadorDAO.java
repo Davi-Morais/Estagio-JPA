@@ -1,5 +1,6 @@
 package br.com.estagiojpa.model.daos;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,7 +9,7 @@ import javax.persistence.TypedQuery;
 
 import br.com.estagiojpa.entities.Orientador;
 
-public class OrientadorDAO {
+public class OrientadorDAO implements Serializable {
 	
 	
 	private static final long serialVersionUID = 1L;
