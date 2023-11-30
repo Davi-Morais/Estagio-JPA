@@ -5,12 +5,17 @@ import java.util.List;
  
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.estagiojpa.controller.services.AlunoService;
 import br.com.estagiojpa.entities.Aluno;
 import br.com.estagiojpa.model.daos.AlunoDAO;
 
+
+@Named
+@ViewScoped
 public class CadastroAlunoBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -30,7 +35,7 @@ public class CadastroAlunoBean implements Serializable{
 		try {
 			this.alunoService.salvar(this.aluno);
 			this.aluno = new Aluno();
-			context.addMessage(null, new FacesMessage("Editora criada com sucesso!"));
+			context.addMessage(null, new FacesMessage("Aluno criado com sucesso!"));
 		} catch (Exception e) {
 			FacesMessage mensagem = new FacesMessage(e.getMessage());
 			mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);

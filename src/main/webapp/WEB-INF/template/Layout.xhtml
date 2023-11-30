@@ -5,13 +5,13 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title><ui:insert name="titulo">Livros</ui:insert>
+	<title><ui:insert name="titulo">Estagio JPA</ui:insert>
 	</title>
 	<h:outputStylesheet library="arquivos" name="styles.css" />
 </h:head>
 <h:body>
 	<header>
-		Projeto DAC
+		Estagio JPA
 		<div style="float: right; margin-right: 20px; margin-top: 8px">
 		#{usuarioBean.nomeUsuario} <br/>
 		#{usuarioBean.dataLogin}
@@ -20,8 +20,8 @@
 	<h:form>
 		<p:menubar style="margin-top: -20px; margin-bottom: 20px">
 			<p:submenu label="Cadastros">
-				<p:menuitem value="Livro"
-					action="/cadastro-livro-layout?faces-redirect=true" />
+				<p:menuitem value="Aluno"
+					action="/cadastro-aluno-layout?faces-redirect=true" />
 				<p:menuitem value="Editora"
 					action="/cadastro-editora-layout?faces-redirect=true" />
 			</p:submenu>
