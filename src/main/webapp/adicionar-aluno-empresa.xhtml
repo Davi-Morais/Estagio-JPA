@@ -10,9 +10,9 @@
 	<!-- 		<f:viewAction action="#{cadastroLivroBean.preparaListaDeEditoras}" /> -->
 	<!-- 	</f:metadata> -->
 
-	<ui:define name="titulo">Adicionar alunos</ui:define>
+	<ui:define name="titulo">Adicionar alunos em Empresa</ui:define>
 	<ui:define name="corpo">
-		<h2>Adicionar alunos para Orientadores</h2>
+		<h2>Adicionar alunos em Empresa</h2>
 		<h:form id="frm">
 			<p:messages showDetail="false" showSummary="true" />
 			<p:panelGrid columns="2">
@@ -22,10 +22,10 @@
 
 
 				<h:outputLabel value="Aluno" />
-				<p:selectOneMenu value="#{orientadorAddAluno.aluno}" label="Aluno"
+				<p:selectOneMenu value="#{empresaAddAluno.aluno}" label="Aluno"
 					id="aluno" converter="omnifaces.SelectItemsConverter">
 					<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
-					<f:selectItems value="#{orientadorAddAluno.alunos}" var="aluno"
+					<f:selectItems value="#{empresaAddAluno.alunos}" var="aluno"
 						itemValue="#{aluno}" itemLabel="#{aluno.nome}" />
 				</p:selectOneMenu>
 
@@ -37,13 +37,13 @@
 
 
 
-				<h:outputLabel value="Orientador" />
-				<p:selectOneMenu value="#{orientadorAddAluno.orientador}"
-					label="Orientador" id="orientador"
+				<h:outputLabel value="Empresa" />
+				<p:selectOneMenu value="#{empresaAddAluno.empresa}"
+					label="Empresa" id="empresa"
 					converter="omnifaces.SelectItemsConverter">
 					<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
-					<f:selectItems value="#{orientadorAddAluno.orientadores}" var="orientador"
-						itemValue="#{orientador}" itemLabel="#{orientador.nome}" />
+					<f:selectItems value="#{empresaAddAluno.empresas}" var="empresa"
+						itemValue="#{empresa}" itemLabel="#{empresa.nome}" />
 				</p:selectOneMenu>
 
 
@@ -53,7 +53,7 @@
 
 
 				<h:outputLabel />
-				<h:commandButton value="Salvar" action="#{orientadorAddAluno.adicionarAluno}" />
+				<h:commandButton value="Salvar" action="#{empresaAddAluno.adicionarAluno}" />
 
 				<h:commandLink value="Ir para os livros"
 					action="listalivros-layout?faces-redirect=true" />
@@ -64,10 +64,3 @@
 	
 
 </ui:composition>
-
-
-
-
-
-
-

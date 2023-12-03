@@ -7,7 +7,9 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import br.com.estagiojpa.entities.Aluno;
 import br.com.estagiojpa.entities.Empresa;
+import br.com.estagiojpa.entities.Orientador;
 
 public class EmpresaDAO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -36,8 +38,13 @@ public class EmpresaDAO implements Serializable {
 		this.manager.remove(empresa);
 	}
 	
+	public void addAluno(Empresa empresa, Aluno aluno) {
+		empresa.setAlunos(aluno);
+		this.manager.merge(empresa);
+	}
+	
 	public List<Empresa> todas() {
-		TypedQuery<Empresa> query = manager.createQuery("FROM Empresas", Empresa.class);
+		TypedQuery<Empresa> query = manager.createQuery("FROM Empresa", Empresa.class);
 		return query.getResultList();
 	}
 }
