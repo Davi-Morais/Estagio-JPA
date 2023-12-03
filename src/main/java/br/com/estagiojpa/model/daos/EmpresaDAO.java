@@ -1,5 +1,6 @@
 package br.com.estagiojpa.model.daos;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,7 +9,7 @@ import javax.persistence.TypedQuery;
 
 import br.com.estagiojpa.entities.Empresa;
 
-public class EmpresaDAO {
+public class EmpresaDAO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private EntityManager manager;
