@@ -40,7 +40,7 @@ public class AlunoDAO implements Serializable {
 	}
 	
 	public List<Aluno> todas() {
-		TypedQuery<Aluno> query = manager.createQuery("FROM Alunos", Aluno.class);
+		TypedQuery<Aluno> query = manager.createQuery("FROM Aluno", Aluno.class);
 		return query.getResultList();
 	}
 }

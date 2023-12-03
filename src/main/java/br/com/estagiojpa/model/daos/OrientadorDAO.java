@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import br.com.estagiojpa.entities.Aluno;
 import br.com.estagiojpa.entities.Orientador;
 
 public class OrientadorDAO implements Serializable {
@@ -38,8 +39,13 @@ public class OrientadorDAO implements Serializable {
 		this.manager.remove(orientador);
 	}
 	
+	public void addAluno(Orientador orientador, Aluno aluno) {
+		orientador.setAluno(aluno);
+		this.manager.merge(orientador);
+	}
+	
 	public List<Orientador> todas() {
-		TypedQuery<Orientador> query = manager.createQuery("FROM Orientadores", Orientador.class);
+		TypedQuery<Orientador> query = manager.createQuery("FROM Orientador", Orientador.class);
 		return query.getResultList();
 	}
 	

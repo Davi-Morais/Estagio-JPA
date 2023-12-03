@@ -58,6 +58,7 @@ public class CadastroOrientadorBean implements Serializable {
 
 
 	public List<Orientador> getOrientadores() {
+		this.listarOrientadores();
 		return orientadores;
 	}
 
