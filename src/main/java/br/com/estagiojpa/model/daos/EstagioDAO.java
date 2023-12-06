@@ -1,5 +1,6 @@
 package br.com.estagiojpa.model.daos;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,7 +9,7 @@ import javax.persistence.TypedQuery;
 
 import br.com.estagiojpa.entities.Estagio;
 
-public class EstagioDAO {
+public class EstagioDAO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -37,7 +38,7 @@ public class EstagioDAO {
 	}
 	
 	public List<Estagio> todas() {
-		TypedQuery<Estagio> query = manager.createQuery("FROM Estagios", Estagio.class);
+		TypedQuery<Estagio> query = manager.createQuery("FROM Estagio", Estagio.class);
 		return query.getResultList();
 	}
 	

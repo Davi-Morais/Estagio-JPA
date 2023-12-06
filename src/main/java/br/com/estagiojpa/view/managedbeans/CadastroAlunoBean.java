@@ -2,7 +2,8 @@ package br.com.estagiojpa.view.managedbeans;
 
 import java.io.Serializable;
 import java.util.List;
- 
+
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -29,6 +30,11 @@ public class CadastroAlunoBean implements Serializable{
 	
 	private List<Aluno> alunos;
 	
+	
+	@PostConstruct
+	public void init() {
+		this.alunos = this.alunoDAO.todas();
+	}
 	
 	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
@@ -62,7 +68,6 @@ public class CadastroAlunoBean implements Serializable{
 	}
 	
 	public List<Aluno> getAlunos() {
-		this.listarAlunos();
 		return alunos;
 	}
 	public void setAlunos(List<Aluno> alunos) {

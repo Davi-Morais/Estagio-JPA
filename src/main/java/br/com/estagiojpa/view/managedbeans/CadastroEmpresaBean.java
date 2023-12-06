@@ -3,6 +3,7 @@ package br.com.estagiojpa.view.managedbeans;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -31,6 +32,11 @@ private static final long serialVersionUID = 1L;
 	
 	private List<Empresa> empresas;
 	
+	
+	@PostConstruct
+	public void init() {
+		this.empresas = this.empresaDAO.todas();
+	}
 	
 	public void salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
