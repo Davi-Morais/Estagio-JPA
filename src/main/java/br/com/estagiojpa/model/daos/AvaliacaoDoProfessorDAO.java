@@ -38,7 +38,7 @@ public class AvaliacaoDoProfessorDAO implements Serializable {
 	}
 	
 	public List<AvaliacaoDoProfessor> todas() {
-		TypedQuery<AvaliacaoDoProfessor> query = manager.createQuery("FROM avaliacaoprofessor", AvaliacaoDoProfessor.class);
+		TypedQuery<AvaliacaoDoProfessor> query = manager.createQuery("FROM AvaliacaoDoProfessor", AvaliacaoDoProfessor.class);
 		return query.getResultList();
 	}
 	

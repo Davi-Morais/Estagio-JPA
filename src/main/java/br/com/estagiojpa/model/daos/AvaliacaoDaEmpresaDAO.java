@@ -1,5 +1,6 @@
 package br.com.estagiojpa.model.daos;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,7 +9,7 @@ import javax.persistence.TypedQuery;
 
 import br.com.estagiojpa.entities.AvaliacaoDaEmpresa;
 
-public class AvaliacaoDaEmpresaDAO {
+public class AvaliacaoDaEmpresaDAO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private EntityManager manager;
@@ -36,7 +37,7 @@ public class AvaliacaoDaEmpresaDAO {
 	}
 	
 	public List<AvaliacaoDaEmpresa> todas() {
-		TypedQuery<AvaliacaoDaEmpresa> query = manager.createQuery("FROM avaliacaoempresa", AvaliacaoDaEmpresa.class);
+		TypedQuery<AvaliacaoDaEmpresa> query = manager.createQuery("FROM AvaliacaoDaEmpresa", AvaliacaoDaEmpresa.class);
 		return query.getResultList();
 	}
 }

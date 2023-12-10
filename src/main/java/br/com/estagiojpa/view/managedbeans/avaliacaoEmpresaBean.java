@@ -13,19 +13,24 @@ import javax.inject.Named;
 import org.primefaces.PrimeFaces;
 
 import br.com.estagiojpa.controller.services.AlunoService;
+import br.com.estagiojpa.controller.services.AvaliacaoEmpresaService;
 import br.com.estagiojpa.controller.services.AvaliacaoProfessorService;
+import br.com.estagiojpa.controller.services.EmpresaService;
 import br.com.estagiojpa.controller.services.OrientadorService;
 import br.com.estagiojpa.entities.Aluno;
-import br.com.estagiojpa.entities.Orientador;
+import br.com.estagiojpa.entities.AvaliacaoDaEmpresa;
 import br.com.estagiojpa.entities.AvaliacaoDoProfessor;
 import br.com.estagiojpa.entities.Empresa;
+import br.com.estagiojpa.entities.Orientador;
 import br.com.estagiojpa.model.daos.AlunoDAO;
+import br.com.estagiojpa.model.daos.AvaliacaoDaEmpresaDAO;
 import br.com.estagiojpa.model.daos.AvaliacaoDoProfessorDAO;
+import br.com.estagiojpa.model.daos.EmpresaDAO;
 import br.com.estagiojpa.model.daos.OrientadorDAO;
 
 @Named
 @ViewScoped
-public class avaliacaoProfessorBean implements Serializable {
+public class avaliacaoEmpresaBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
@@ -35,40 +40,38 @@ public class avaliacaoProfessorBean implements Serializable {
 	private AlunoDAO alunoDAO;
 
 	@Inject
-	private OrientadorService orientadorService;
+	private EmpresaService empresaService;
 
 	@Inject
-	private OrientadorDAO orientadorDAO;
+	private EmpresaDAO empresaDAO;
 	
 	@Inject
-	private AvaliacaoProfessorService avaliacaoService;
+	private AvaliacaoEmpresaService avaliacaoEmpresaService;
 	
 	@Inject
-	private AvaliacaoDoProfessorDAO avalProfDAO;
-
+	private AvaliacaoDaEmpresaDAO avalEmpresaDAO;
 	
 	
-	private List<Orientador> orientadores;
-	private List<Aluno> alunosOrientados;
-	private List<AvaliacaoDoProfessor> avaliacoes;
-
-
-	private AvaliacaoDoProfessor avalProf = new AvaliacaoDoProfessor();
+	private List<Empresa> empresas;
+	private List<Aluno> alunosEmpresa;
+	private List<AvaliacaoDaEmpresa> avaliacoes;
+	
+	private AvaliacaoDaEmpresa avalEmpresa = new AvaliacaoDaEmpresa();
 	private Aluno aluno = new Aluno();
-	private Orientador orientador = new Orientador();
+	private Empresa empresa = new Empresa();
 	
 	
 	@PostConstruct
 	public void init() {
-		this.orientadores = this.orientadorDAO.todas();
-		this.avaliacoes = this.avalProfDAO.todas();
+		this.empresas = this.empresaDAO.todas();
+		this.avaliacoes = this.avalEmpresaDAO.todas();
 	}
 	
 	public void carregarAlunos() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		try { 
-			List<Aluno> alunos = this.orientadorDAO.alunosPorOrientador(this.orientador);
-			this.alunosOrientados = alunos;
+			List<Aluno> alunos = this.empresaDAO.alunosPorEmpresa(this.empresa);
+			this.alunosEmpresa = alunos;
 			PrimeFaces.current().ajax().update("form:selectAluno");
 			context.addMessage(null, new FacesMessage("Busca por alunos realizada com sucesso!"));
 		} catch (Exception e) {
@@ -81,15 +84,15 @@ public class avaliacaoProfessorBean implements Serializable {
 	public void avaliarAluno() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		try { 
-			this.avalProf.setAluno(this.aluno);
-			this.avalProf.setOrientador(this.orientador);
-			this.avaliacaoService.salvar(this.avalProf);
+			this.avalEmpresa.setAluno(this.aluno);
+			this.avalEmpresa.setEmpresa(this.empresa);
+			this.avaliacaoEmpresaService.salvar(this.avalEmpresa);
 			
 			context.addMessage(null, new FacesMessage("Avaliação feita com sucesso!"));
 			
-			this.avalProf = new AvaliacaoDoProfessor();
+			this.avalEmpresa = new AvaliacaoDaEmpresa();
 			this.aluno = new Aluno();
-			this.orientador = new Orientador();
+			this.empresa = new Empresa();
 		} catch (Exception e) {
 			FacesMessage mensagem = new FacesMessage(e.getMessage());
 			mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
@@ -97,32 +100,20 @@ public class avaliacaoProfessorBean implements Serializable {
 		}
 	}
 
-
-	public List<Orientador> getOrientadores() {
-		return orientadores;
+	public List<Empresa> getEmpresas() {
+		return empresas;
 	}
 
-
-	public void setOrientadores(List<Orientador> orientadores) {
-		this.orientadores = orientadores;
+	public void setEmpresas(List<Empresa> empresas) {
+		this.empresas = empresas;
 	}
 
-
-	public List<Aluno> getAlunosOrientados() {
-		return alunosOrientados;
+	public List<Aluno> getAlunosEmpresa() {
+		return alunosEmpresa;
 	}
 
-
-	public void setAlunosOrientados(List<Aluno> alunos) {
-		this.alunosOrientados = alunos;
-	}
-	
-	public AvaliacaoDoProfessor getAvalProf() {
-		return avalProf;
-	}
-
-	public void setAvalProf(AvaliacaoDoProfessor avalProf) {
-		this.avalProf = avalProf;
+	public void setAlunosEmpresa(List<Aluno> alunosEmpresa) {
+		this.alunosEmpresa = alunosEmpresa;
 	}
 
 	public Aluno getAluno() {
@@ -133,24 +124,32 @@ public class avaliacaoProfessorBean implements Serializable {
 		this.aluno = aluno;
 	}
 
-	public Orientador getOrientador() {
-		return orientador;
+	public Empresa getEmpresa() {
+		return empresa;
 	}
 
-	public void setOrientador(Orientador orientador) {
-		this.orientador = orientador;
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
-	public List<AvaliacaoDoProfessor> getAvaliacoes() {
+	public AvaliacaoDaEmpresa getAvalEmpresa() {
+		return avalEmpresa;
+	}
+
+	public void setAvalEmpresa(AvaliacaoDaEmpresa avalEmpresa) {
+		this.avalEmpresa = avalEmpresa;
+	}
+
+	public List<AvaliacaoDaEmpresa> getAvaliacoes() {
 		return avaliacoes;
 	}
 
-	public void setAvaliacoes(List<AvaliacaoDoProfessor> avaliacoes) {
+	public void setAvaliacoes(List<AvaliacaoDaEmpresa> avaliacoes) {
 		this.avaliacoes = avaliacoes;
 	}
 	
+	
 }
-
 
 
 
