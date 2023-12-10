@@ -5,20 +5,13 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title><ui:insert name="titulo">Estagio JPA</ui:insert>
+	<title><ui:insert name="titulo">Home</ui:insert>
 	</title>
 	<h:outputStylesheet library="arquivos" name="styles.css" />
 </h:head>
 <h:body>
-	<header style="max-width: 100%">
-		<span style = "margin: 45%"> Estagio JPA</span>
-		<div style="float: right; margin-right: 20px; margin-top: 8px">
-		#{usuarioBean.nomeUsuario} <br/>
-		#{usuarioBean.dataLogin}
-		</div>
-	</header>
 	<h:form>
-		<p:menubar style="margin-top: -20px; margin-bottom: 20px;">
+		<p:menubar>
 			<p:submenu label="Cadastros">
 				<p:menuitem value="Aluno"
 					action="/cadastro-aluno-layout?faces-redirect=true" />
@@ -64,6 +57,6 @@
 	<div id="conteudo">
 		<ui:insert name="corpo" />
 	</div>
-	<footer> Gerenciador de Estágios </footer>
+	<footer style="background-color: transparent; color: black;text-align: center;padding: 10px;"> Gerenciador de Estágios </footer>
 </h:body>
 </html>
