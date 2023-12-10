@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="titulo">Avaliação da Empresa</ui:define>
+	<ui:define name="corpo">
+		<h2>Avalie os alunos da sua empresa!</h2>
+		<h:form id="frm">
+			<p:messages showDetail="false" showSummary="true" />
+			<p:panelGrid columns="2">
+
+				<h:outputLabel value="Empresa" />
+				<p:selectOneMenu value="#{avaliacaoEmpresaBean.empresa}"
+					label="Empresa" id="empresa"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItem itemLabel="Selecione a empresa"
+						noSelectionOption="true" />
+					<f:selectItems value="#{avaliacaoEmpresaBean.empresas}"
+						var="empresa" itemValue="#{empresa}"
+						itemLabel="#{empresa.nome}" />
+					<p:ajax update="selectAluno"
+						listener="#{avaliacaoEmpresaBean.carregarAlunos}" />
+				</p:selectOneMenu>
+
+
+				<h:outputLabel value="Aluno" />
+				<p:selectOneMenu value="#{avaliacaoEmpresaBean.aluno}"
+					label="Aluno" id="selectAluno"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItem itemLabel="Selecione o aluno"
+						noSelectionOption="true" />
+					<f:selectItems value="#{avaliacaoEmpresaBean.alunosEmpresa}"
+						var="aluno" itemValue="#{aluno}" itemLabel="#{aluno.nome}" />
+				</p:selectOneMenu>
+
+				<h:outputLabel />
+				<h:outputLabel />
+
+				<h:outputLabel value="Rendimento de Trabalho" />
+				<p:selectOneMenu
+					value="#{avaliacaoEmpresaBean.avalEmpresa.rendimentoTrabalho}"
+					id="assiduidade" required="true">
+					<f:selectItem itemLabel="Selecione a nota" noSelectionOption="true" />
+					<f:selectItem itemLabel="Insuficiente" itemValue="Insuficiente" />
+					<f:selectItem itemLabel="Regular" itemValue="Regular" />
+					<f:selectItem itemLabel="Bom" itemValue="Bom" />
+					<f:selectItem itemLabel="Muito Bom" itemValue="Muito Bom" />
+				</p:selectOneMenu>
+
+				<h:outputLabel value="Conhecimentos" />
+				<p:selectOneMenu
+					value="#{avaliacaoEmpresaBean.avalEmpresa.conhecimentos}"
+					id="disciplina" required="true">
+					<f:selectItem itemLabel="Selecione a nota" noSelectionOption="true" />
+					<f:selectItem itemLabel="Insuficiente" itemValue="Insuficiente" />
+					<f:selectItem itemLabel="Regular" itemValue="Regular" />
+					<f:selectItem itemLabel="Bom" itemValue="Bom" />
+					<f:selectItem itemLabel="Muito Bom" itemValue="Muito Bom" />
+				</p:selectOneMenu>
+
+				<h:outputLabel value="Cumprimento das Tarefas " />
+				<p:selectOneMenu
+					value="#{avaliacaoEmpresaBean.avalEmpresa.cumprimentoTarefas}"
+					id="sociabilidade" required="true">
+					<f:selectItem itemLabel="Selecione a nota" noSelectionOption="true" />
+					<f:selectItem itemLabel="Insuficiente" itemValue="Insuficiente" />
+					<f:selectItem itemLabel="Regular" itemValue="Regular" />
+					<f:selectItem itemLabel="Bom" itemValue="Bom" />
+					<f:selectItem itemLabel="Muito Bom" itemValue="Muito Bom" />
+				</p:selectOneMenu>
+
+				<h:outputLabel value="Aprendizagem" />
+				<p:selectOneMenu
+					value="#{avaliacaoEmpresaBean.avalEmpresa.aprendizagem}"
+					id="responsabilidade" required="true">
+					<f:selectItem itemLabel="Selecione a nota" noSelectionOption="true" />
+					<f:selectItem itemLabel="Insuficiente" itemValue="Insuficiente" />
+					<f:selectItem itemLabel="Regular" itemValue="Regular" />
+					<f:selectItem itemLabel="Bom" itemValue="Bom" />
+					<f:selectItem itemLabel="Muito Bom" itemValue="Muito Bom" />
+				</p:selectOneMenu>
+
+				<h:outputLabel value="Desempenho" />
+				<p:selectOneMenu
+					value="#{avaliacaoEmpresaBean.avalEmpresa.desempenho }"
+					id="iniciativa" required="true">
+					<f:selectItem itemLabel="Selecione a nota" noSelectionOption="true" />
+					<f:selectItem itemLabel="Insuficiente" itemValue="Insuficiente" />
+					<f:selectItem itemLabel="Regular" itemValue="Regular" />
+					<f:selectItem itemLabel="Bom" itemValue="Bom" />
+					<f:selectItem itemLabel="Muito Bom" itemValue="Muito Bom" />
+				</p:selectOneMenu>
+
+
+
+			</p:panelGrid>
+
+
+
+			<h:outputLabel />
+			<h:commandButton value="Avaliar!"
+				action="#{avaliacaoEmpresaBean.avaliarAluno}" />
+
+
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>

@@ -43,6 +43,13 @@ public class EmpresaDAO implements Serializable {
 		this.manager.merge(empresa);
 	}
 	
+	public List<Aluno> alunosPorEmpresa(Empresa empresa) {
+		Empresa empresaBusca = this.manager.find(Empresa.class, empresa.getId());
+		List<Aluno> resultados = empresaBusca.getAlunos();
+		
+		return resultados;
+	}
+	
 	public List<Empresa> todas() {
 		TypedQuery<Empresa> query = manager.createQuery("FROM Empresa", Empresa.class);
 		return query.getResultList();

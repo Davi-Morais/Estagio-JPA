@@ -36,8 +36,8 @@ public class AvaliacaoDaEmpresa implements Serializable {
 	@OneToOne
     private Empresa empresa;
     
-	@Column(unique = true)
-    private Orientador orientador;
+	@OneToOne
+    private Aluno aluno;
 	
 	
 	public Long getId() {
@@ -82,10 +82,11 @@ public class AvaliacaoDaEmpresa implements Serializable {
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
-	public Orientador getOrientador() {
-		return orientador;
+	public Aluno getAluno() {
+		return aluno;
 	}
-	public void setOrientador(Orientador orientador) {
-		this.orientador = orientador;
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
 	}
+	
 }
