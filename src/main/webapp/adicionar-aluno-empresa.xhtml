@@ -12,6 +12,122 @@
 
 	<ui:define name="titulo">Adicionar alunos em Empresa</ui:define>
 	<ui:define name="corpo">
+            
+                        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f8f9fa;
+                margin: 0;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h2 {
+                color: black;
+                margin-bottom: 20px;
+                text-align: center;
+                font-weight: bold;
+                font-size: 28px
+            }
+
+            form {
+                width: 80%;
+                max-width: 400px;
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                margin-top: 20px;
+                margin: 0 auto;
+            }
+
+            outputLabel {
+                display: block;
+                margin-top: 10px;
+            }
+
+            inputTexto {
+                width: 250px;
+                padding: 10px;
+                margin-top: 5px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+            }
+
+            commandButton {
+                display: block;
+                width: 70%;
+                padding: 10px;
+                background-color: #007bff;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+                cursor: pointer;
+                margin-top: 35px;
+            }
+            
+            .link-button {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #17a2b8;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+                margin-left: 28%;
+            }
+            
+            .link-button:hover {
+                background-color: #138496;
+            }
+            
+            .form-panel {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 80px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .form-panel label {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            .form-panel input,
+            .form-panel select {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            .form-panel .command-button {
+                display: inline-block;
+                width: 100%;
+                padding: 15px;
+                background-color: #007bff;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+                cursor: pointer;
+                border: none;
+            }
+
+            .form-panel .command-button:hover {
+                background-color: #0056b3;
+            }
+
+        </style>
+            
 		<h2>Adicionar alunos em Empresa</h2>
 		<h:form id="frm">
 			<p:messages showDetail="false" showSummary="true" />
@@ -53,12 +169,10 @@
 
 
 				<h:outputLabel />
-				<h:commandButton value="Salvar" action="#{empresaAddAluno.adicionarAluno}" />
-
-				<h:commandLink value="Ir para os livros"
-					action="listalivros-layout?faces-redirect=true" />
-
+				<h:commandButton value="Salvar" action="#{empresaAddAluno.adicionarAluno}" styleClass="link-button"/>
 			</p:panelGrid>
+                        <h:commandLink value="Ir para os livros"
+					action="listalivros-layout?faces-redirect=true" style="margin-top:10px" />
 		</h:form>
 		</ui:define>
 	
