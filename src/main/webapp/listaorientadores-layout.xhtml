@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+    
+            <h:outputStylesheet library="arquivos" name="styles.css" />
+    
+	<ui:define name="titulo">Lista de Orientadores</ui:define>
+	<ui:define name="corpo">
+		<h2>Orientadores</h2>
+		<h:form >
+			<p:dataTable  style=" max-width: 600px; text-align: center; margin: 0 auto;  font-weight: bold" value="#{cadastroOrientadorBean.orientadores}" var="orientador">
+                        <p:column style="width: 45%; border-radius: 10px; border: 0px; background-color: #836FFF; padding: 10px;" cellpadding = "10">
+                            <f:facet name="header">
+                                <h:outputText style="font-size: 28px;" value="Nome" />
+                            </f:facet>
+                            <h:outputText style="border: 0px; color: white" value="#{orientador.nome}" />
+                        </p:column>
+
+                        <p:column style="width: 45%; border-radius: 10px; border: 0px; background-color: #836FFF; padding: 10px;">
+                            <f:facet name="header">
+                                <h:outputText style="font-size: 28px;" value="Email" />
+                            </f:facet>
+                            <h:outputText style="border: 0px; color: white" value="#{orientador.email}" />
+                        </p:column>
+                    </p:dataTable>
+
+
+
+			<p:commandLink value="Ir para Lista de Empresas"
+				action="listaempresas-layout?faces-redirect=true"
+                                style = "text-decoration: none; color: black; margin: 20px"/>
+			<p:commandLink value="Home" action="index?faces-redirect=true" style = "text-decoration: none; color: black;"/>
+                        
+		</h:form>
+	</ui:define>
+</ui:composition>

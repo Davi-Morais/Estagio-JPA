@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<!-- 	<f:metadata> -->
+<!-- 		<f:viewAction action="#{consultaEditorasBean.consultar}" /> -->
+<!-- 	</f:metadata> -->
+	<ui:define name="titulo">Lista de Alunos</ui:define>
+	<ui:define name="corpo">
+		<h2>Alunos</h2>
+		<h:form>
+			<p:dataTable style = "border:0px; max-width: 1000px; text-align: center; margin: 0 auto; font-weight: bold" value="#{cadastroAlunoBean.alunos}" var="aluno">
+				
+				<p:column style="width: 200px; border-radius: 20px; border: 0px; padding-left: 20px; background-color: #836FFF">
+					<f:facet name="header">
+						<h:outputText style="font-size: 28px;" value="Nome" />
+					</f:facet>
+					<h:outputText style="border: 0px; color: white" value="#{aluno.nome}" />
+				</p:column >
+                                
+                                <p:column style="width: 300px; border-radius: 20px; border: 0px; padding-left: 20px; background-color: #836FFF">
+                                         <f:facet name="header">
+                                                    <h:outputText style="font-size: 28px;" value="E-mail" />
+                                            </f:facet>
+                                            <h:outputText style="border: 0px; color: white" value="#{aluno.email}" />
+                                 </p:column>
+                                
+                                 <p:column style="width: 80px; border-radius: 20px; border: 0px; padding-left: 20px; background-color: #836FFF">
+                                         <f:facet name="header">
+                                                    <h:outputText style="font-size: 28px;" value="Gênero" />
+                                            </f:facet>
+                                            <h:outputText style="border-radius: 10px; color: white" value="#{aluno.genero}" />
+                                 </p:column>
+                                
+                                 <p:column style="width: 80px; border-radius: 20px; border: 0px; padding-left: 20px; background-color: #836FFF">
+                                         <f:facet name="header">
+                                                    <h:outputText style="font-size: 28px;" value="Idade" />
+                                            </f:facet>
+                                            <h:outputText style="border: 0px; color: white" value="#{aluno.idade}" />
+                                 </p:column>
+                             
+				
+
+			</p:dataTable>
+			<p:commandLink value="Ir para Lista de Orientadores"
+				action="listaorientadores-layout?faces-redirect=true" 
+                                style = "text-decoration: none; color: black; margin: 20px"/>
+			<p:commandLink value="Home" action="index?faces-redirect=true" style = "text-decoration: none; color: black;" />
+		</h:form>
+	</ui:define>
+</ui:composition>
