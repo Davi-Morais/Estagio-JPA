@@ -10,15 +10,15 @@
 	<h:outputStylesheet library="arquivos" name="styles.css" />
 </h:head>
 <h:body>
-	<header>
-		Estagio JPA
+	<header style="max-width: 100%">
+		<span style = "margin: 45%"> Estagio JPA</span>
 		<div style="float: right; margin-right: 20px; margin-top: 8px">
 		#{usuarioBean.nomeUsuario} <br/>
 		#{usuarioBean.dataLogin}
 		</div>
 	</header>
 	<h:form>
-		<p:menubar style="margin-top: -20px; margin-bottom: 20px">
+		<p:menubar style="margin-top: -20px; margin-bottom: 20px;">
 			<p:submenu label="Cadastros">
 				<p:menuitem value="Aluno"
 					action="/cadastro-aluno-layout?faces-redirect=true" />
@@ -42,11 +42,17 @@
 					action="/avaliacao-empresa-layout?faces-redirect=true" />
 			</p:submenu>
 			<p:submenu label="Consultas">
-				<p:menuitem value="Livros"
-					action="/listalivros-layout?faces-redirect=true" />
-				<p:menuitem value="Editoras"
-					action="/listaeditoras-layout?faces-redirect=true" />
+				<p:menuitem value="Alunos"
+					action="/listaalunos-layout?faces-redirect=true" />
+				<p:menuitem value="Orientadores"
+					action="/listaorientadores-layout?faces-redirect=true" />
+                                <p:menuitem value="Empresas"
+					action="/listaempresas-layout?faces-redirect=true" />
+                                <p:menuitem value="Estagios"
+					action="/listaestagios-layout?faces-redirect=true" />
 			</p:submenu>
+                        <p:menuitem value="Home"
+					action="index?faces-redirect=true" />
 			
 		</p:menubar>
 		
