@@ -14,9 +14,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
+
+
 @Entity
 @Table(name = "avaliacaoProfessor")
 public class AvaliacaoDoProfessor implements Serializable {
+	
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,7 +41,7 @@ public class AvaliacaoDoProfessor implements Serializable {
 	@OneToOne
     private Aluno aluno;
     
-	@Column(unique = true)
+	@OneToOne
     private Orientador orientador;
 	
 	

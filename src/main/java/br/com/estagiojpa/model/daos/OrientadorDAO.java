@@ -44,6 +44,13 @@ public class OrientadorDAO implements Serializable {
 		this.manager.merge(orientador);
 	}
 	
+	public List<Aluno> alunosPorOrientador(Orientador orientador) {
+		Orientador orientadorBusca = this.manager.find(Orientador.class, orientador.getId());
+		List<Aluno> resultados = orientadorBusca.getAlunos();
+		
+		return resultados;
+	}
+	
 	public List<Orientador> todas() {
 		TypedQuery<Orientador> query = manager.createQuery("FROM Orientador", Orientador.class);
 		return query.getResultList();

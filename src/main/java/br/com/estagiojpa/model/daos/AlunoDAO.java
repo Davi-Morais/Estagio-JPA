@@ -43,4 +43,18 @@ public class AlunoDAO implements Serializable {
 		TypedQuery<Aluno> query = manager.createQuery("FROM Aluno", Aluno.class);
 		return query.getResultList();
 	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
