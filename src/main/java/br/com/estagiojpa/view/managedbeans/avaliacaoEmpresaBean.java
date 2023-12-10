@@ -54,6 +54,7 @@ public class avaliacaoEmpresaBean implements Serializable {
 	
 	private List<Empresa> empresas;
 	private List<Aluno> alunosEmpresa;
+	private List<AvaliacaoDaEmpresa> avaliacoes;
 	
 	private AvaliacaoDaEmpresa avalEmpresa = new AvaliacaoDaEmpresa();
 	private Aluno aluno = new Aluno();
@@ -63,6 +64,7 @@ public class avaliacaoEmpresaBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		this.empresas = this.empresaDAO.todas();
+		this.avaliacoes = this.avalEmpresaDAO.todas();
 	}
 	
 	public void carregarAlunos() {
@@ -136,6 +138,14 @@ public class avaliacaoEmpresaBean implements Serializable {
 
 	public void setAvalEmpresa(AvaliacaoDaEmpresa avalEmpresa) {
 		this.avalEmpresa = avalEmpresa;
+	}
+
+	public List<AvaliacaoDaEmpresa> getAvaliacoes() {
+		return avaliacoes;
+	}
+
+	public void setAvaliacoes(List<AvaliacaoDaEmpresa> avaliacoes) {
+		this.avaliacoes = avaliacoes;
 	}
 	
 	

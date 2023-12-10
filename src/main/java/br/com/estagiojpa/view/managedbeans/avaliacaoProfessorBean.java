@@ -50,6 +50,7 @@ public class avaliacaoProfessorBean implements Serializable {
 	
 	private List<Orientador> orientadores;
 	private List<Aluno> alunosOrientados;
+	private List<AvaliacaoDoProfessor> avaliacoes;
 
 
 	private AvaliacaoDoProfessor avalProf = new AvaliacaoDoProfessor();
@@ -60,6 +61,7 @@ public class avaliacaoProfessorBean implements Serializable {
 	@PostConstruct
 	public void init() {
 		this.orientadores = this.orientadorDAO.todas();
+		this.avaliacoes = this.avalProfDAO.todas();
 	}
 	
 	public void carregarAlunos() {
@@ -137,6 +139,14 @@ public class avaliacaoProfessorBean implements Serializable {
 
 	public void setOrientador(Orientador orientador) {
 		this.orientador = orientador;
+	}
+
+	public List<AvaliacaoDoProfessor> getAvaliacoes() {
+		return avaliacoes;
+	}
+
+	public void setAvaliacoes(List<AvaliacaoDoProfessor> avaliacoes) {
+		this.avaliacoes = avaliacoes;
 	}
 	
 }

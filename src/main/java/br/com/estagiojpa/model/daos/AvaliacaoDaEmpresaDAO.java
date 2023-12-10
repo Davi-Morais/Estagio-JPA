@@ -37,7 +37,7 @@ public class AvaliacaoDaEmpresaDAO implements Serializable {
 	}
 	
 	public List<AvaliacaoDaEmpresa> todas() {
-		TypedQuery<AvaliacaoDaEmpresa> query = manager.createQuery("FROM avaliacaoempresa", AvaliacaoDaEmpresa.class);
+		TypedQuery<AvaliacaoDaEmpresa> query = manager.createQuery("FROM AvaliacaoDaEmpresa", AvaliacaoDaEmpresa.class);
 		return query.getResultList();
 	}
 }
